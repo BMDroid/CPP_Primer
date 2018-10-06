@@ -68,15 +68,47 @@ int main()
 
     for (int i = 10; i >= 0; -- i)
         std::cout << i << '\n';
+
+    // 1.4.3
+    sum = 0, val = 0;
+    while(std::cin >> val){ // istream becoms invalid whem we hit the EOF or encounter an invalid output
+        sum += val;
+    }
+    std::cout << "The sum is: " << sum << '\n';
+
+    // 1.4.4
+    /**
+     * Count how many consecutive times each distincet value appears in the input.
+     */
+    int currVal = 0; val = 0;
+    // read first num and ensure that we have data to process
+    if (std::cin >> currVal){
+        int cnt = 1;
+        while (std::cin >> val){
+            if (val == currVal){
+                ++ cnt;
+            }
+            else {
+                std::cout << currVal << " occurs " << cnt << " times " << std::endl;
+                currVal = val;
+                cnt = 1;
+            }
+        }
+        std::cout << currVal << " occurs " << cnt << " times " << std::endl;
+    }
+    return 0;
 }
 // 1.1.1 Compiling and Executing Program
 // $ gcc -o ch1 -Wall ch1.cc // -o ch1 specifies the name of the executable file after compiled
 // ./ch1 // excute the file in the current directory
+
 // 1.2 Input and Output
+
 /**
  * 1.3 A Word about Comments: single-line and pair
  * comment pairs do not nest
  */
+
 /**
  * Flow of Control
  *
@@ -86,6 +118,18 @@ int main()
  * 2. for statement
  * contains two parts: header and body
  * and header has three parts: init-statement, condition, expression
+ */
+
+/**
+ * 1.4.3 Reading an unknown num of inputs
+ * while(std::cin >> val) tests the istream
+ * Windows: ctrl-z; UNIX: ctrl-d;
+ * Errors: Type errors; Declaration errors;
+ * edit-compile-debug: recompile the code after each fix
+ */
+
+/**
+ * The if statement could use curly bracket
  */
 
 
